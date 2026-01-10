@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Candidates who register with email/password
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String?
+  phone         String?
+  linkedInUrl   String?
+  portfolioUrl  String?
+  profileImage  String?
+  bio           String?
+  resumePath    String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  applications  Application[]
+  referralsMade Referral[]    @relation("ReferrerRelation")
+
+  @@index([email])
+}
+
+// HR Admin users (separate from candidates)
+model HRAdmin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+}
+
+// Job postings
+model Job {
+  id           String   @id @default(cuid())
+  title        String
+  department   String
+  location     String
+  type         String   // Full-time, Part-time, Contract, Remote
+  description  String
+  requirements String?  // JSON string of requirements array
+  benefits     String?  // JSON string of benefits array
+  minSalary    Int?
+  maxSalary    Int?
+  status       String   @default("DRAFT") // DRAFT, PUBLISHED, CLOSED
+  closingDate  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  applications Application[]
+  referrals    Referral[]
+
+  @@index([status])
+  @@index([department])
+  @@index([location])
+}
+
+// Job applications
+model Application {
+  id           String   @id @default(cuid())
+  jobId        String
+  userId       String
+  status       String   @default("APPLIED") // APPLIED, SHORTLISTED, INTERVIEW, REJECTED, OFFERED, ACCEPTED
+  resumePath   String?
+  coverLetter  String?
+  referralCode String?  // If applied via referral
+  rating       Int?     // Admin rating 1-5
+  notes        String?  // Admin notes
+  appliedAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  job  Job  @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, userId]) // One application per job per user
+  @@index([jobId])
+  @@index([userId])
+  @@index([status])
+}
+
+// Referral tracking
+model Referral {
+  id            String    @id @default(cuid())
+  referrerId    String
+  referredEmail String?   // Optional - filled when someone uses the code
+  jobId         String?   // Optional - specific job referral
+  code          String    @unique
+  status        String    @default("PENDING") // PENDING, COMPLETED, EXPIRED
+  rewardPoints  Int       @default(0)
+  createdAt     DateTime  @default(now())
+  completedAt   DateTime?
+
+  // Relations
+  referrer User @relation("ReferrerRelation", fields: [referrerId], references: [id], onDelete: Cascade)
+  job      Job? @relation(fields: [jobId], references: [id], onDelete: SetNull)
+
+  @@index([referrerId])
+  @@index([code])
+}

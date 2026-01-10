@@ -1,0 +1,352 @@
+{
+  "siteInfo": {
+    "tagline": "AI-Powered Clinical Intelligence & Genomics",
+    "description": "Transforming healthcare through AI-driven clinical intelligence and precision genomics.",
+    "email": "hr@curanova.ai",
+    "phone": "",
+    "socialLinks": {
+      "linkedin": "https://www.linkedin.com/company/curanova-ai",
+      "twitter": "https://twitter.com"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Pioneering AI in Healthcare",
+      "headline": "The Future of",
+      "headlineHighlight": "Healthcare Intelligence",
+      "subheadline": "Transforming healthcare through AI-driven clinical intelligence and precision genomics. Empowering providers with predictive insights and actionable data. ",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Explore Solutions"
+    },
+    "stats": [
+      {
+        "value": "25+",
+        "label": "Clinical Specialties"
+      },
+      {
+        "value": "3B",
+        "label": "DNA Data Points"
+      },
+      {
+        "value": "99.9%",
+        "label": "Platform Uptime"
+      },
+      {
+        "value": "24/7",
+        "label": "AI Monitoring"
+      }
+    ],
+    "features": [
+      {
+        "title": "Clinical Intelligence",
+        "description": "AI-powered decision support that thinks alongside clinicians, delivering real-time insights and predictive analytics.",
+        "icon": "computer"
+      },
+      {
+        "title": "Precision Genomics",
+        "description": "Unlock the power of genomic data for personalized medicine, from pharmacogenomics to disease prevention.",
+        "icon": "dna"
+      },
+      {
+        "title": "Predictive Analytics",
+        "description": "Anticipate health events before they become emergencies with continuous monitoring and AI-driven alerts.",
+        "icon": "chart"
+      },
+      {
+        "title": "Privacy First",
+        "description": "Enterprise-grade security with pseudoanonymized architecture ensuring your data remains protected.",
+        "icon": "lock"
+      }
+    ],
+    "platforms": {
+      "title": "Two Platforms.",
+      "titleHighlight": "One Vision.",
+      "description": "We're building an integrated ecosystem that brings together clinical decision support and genomic intelligence to enable truly personalized medicine.",
+      "platform1": {
+        "title": "Clinical Intelligence Platform",
+        "description": "AI-powered EMR with predictive analytics and multi-specialty decision support."
+      },
+      "platform2": {
+        "title": "Genomics as a Service",
+        "description": "Comprehensive genomics ecosystem for personalized health insights."
+      }
+    },
+    "cta": {
+      "title": "Ready to Transform Healthcare?",
+      "description": "Join us in building the future of precision medicine. Let's discuss how Curanova AI can empower your healthcare organization.",
+      "buttonText": "Schedule a Consultation"
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Our",
+      "titleHighlight": "Services.",
+      "description": "Comprehensive AI-powered healthcare solutions designed to transform clinical decision-making and unlock the power of precision medicine."
+    },
+    "servicesList": [
+      {
+        "id": "clinical",
+        "title": "Clinical Intelligence",
+        "subtitle": "AI-Powered Decision Support",
+        "description": "Our intelligent clinical platform thinks alongside healthcare providers, delivering real-time insights, predictive analytics, and evidence-based recommendations across multiple specialties.",
+        "features": [
+          "Real-time clinical decision support",
+          "Predictive patient monitoring",
+          "Multi-specialty AI modules",
+          "Integrated workflow optimization"
+        ]
+      },
+      {
+        "id": "genomics",
+        "title": "Genomics Services",
+        "subtitle": "Precision Medicine Platform",
+        "description": "Comprehensive genomics ecosystem that transforms genetic data into actionable health insights. From sequencing to interpretation, we make precision medicine accessible.",
+        "features": [
+          "Advanced genomic analysis",
+          "Pharmacogenomics insights",
+          "Disease risk assessment",
+          "Personalized health recommendations"
+        ]
+      },
+      {
+        "id": "analytics",
+        "title": "Predictive Analytics",
+        "subtitle": "Anticipate, Don't React",
+        "description": "Advanced AI algorithms that analyze patient data patterns to predict health events before they become emergencies. Move from reactive to proactive healthcare.",
+        "features": [
+          "Early warning systems",
+          "Risk stratification",
+          "Outcome prediction",
+          "Population health insights"
+        ]
+      }
+    ],
+    "industries": [
+      {
+        "name": "Hospitals & Health Systems",
+        "description": "Enterprise-scale clinical intelligence for improved patient outcomes."
+      },
+      {
+        "name": "Research Institutions",
+        "description": "Accelerate genomic research with advanced analytics and data management."
+      },
+      {
+        "name": "Wellness & Lifestyle",
+        "description": "Personalized health optimization through genomic and clinical insights."
+      },
+      {
+        "name": "Corporate Health",
+        "description": "Employee wellness programs powered by advanced health analytics."
+      }
+    ]
+  },
+  "solutions": {
+    "hero": {
+      "title": "Our",
+      "titleHighlight": "Solutions",
+      "description": "Two powerful platforms working together to deliver comprehensive healthcare intelligence and precision medicine capabilities."
+    },
+    "clinicalPlatform": {
+      "label": "Platform 1",
+      "title": "Clinical Intelligence Platform",
+      "description": "An AI-powered clinical ecosystem designed to transform healthcare delivery through intelligent decision support, predictive analytics, and seamless workflow integration.",
+      "features": [
+        {
+          "title": "Intelligent EMR",
+          "description": "AI-enhanced medical records that actively assist clinicians with documentation, diagnosis, and treatment planning."
+        },
+        {
+          "title": "Predictive Monitoring",
+          "description": "Continuous patient monitoring with AI-powered early warning systems that predict deterioration before it happens."
+        },
+        {
+          "title": "Multi-Specialty AI",
+          "description": "Specialized AI modules across clinical domains providing expert-level decision support."
+        }
+      ]
+    },
+    "genomicsPlatform": {
+      "label": "Platform 2",
+      "title": "Genomics as a Service",
+      "description": "A comprehensive genomics ecosystem that transforms genetic data into actionable health insights, making precision medicine accessible to everyone.",
+      "features": [
+        {
+          "title": "Advanced Analysis",
+          "description": "State-of-the-art genomic sequencing and interpretation powered by AI algorithms."
+        },
+        {
+          "title": "Actionable Reports",
+          "description": "Clear, clinically relevant reports that translate genetic findings into practical health guidance."
+        },
+        {
+          "title": "Secure Data Vault",
+          "description": "Enterprise-grade security with pseudoanonymized storage and patient-controlled access."
+        }
+      ]
+    },
+    "organizations": [
+      {
+        "title": "Hospitals",
+        "description": "Enterprise clinical intelligence and genomics integration for improved patient outcomes and operational efficiency.",
+        "features": [
+          "EMR Integration",
+          "Clinical Decision Support",
+          "Predictive Analytics"
+        ]
+      },
+      {
+        "title": "Laboratories",
+        "description": "Advanced genomic analysis capabilities with seamless integration and white-label options.",
+        "features": [
+          "Genomic Analysis",
+          "Report Generation",
+          "LIS Integration"
+        ]
+      },
+      {
+        "title": "Wellness Centers",
+        "description": "Personalized health optimization programs powered by genomic and clinical insights.",
+        "features": [
+          "Nutrigenomics",
+          "Lifestyle Optimization",
+          "Preventive Health"
+        ]
+      },
+      {
+        "title": "Schools & Universities",
+        "description": "Genomics-based learning optimization and student wellness programs for educational institutions.",
+        "features": [
+          "Learning Style Assessment",
+          "Student Wellness Programs",
+          "Talent Identification"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "hero": {
+      "title": "About",
+      "titleHighlight": "Curanova AI",
+      "description": "We're on a mission to transform healthcare through the power of artificial intelligence and precision genomics."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To build the world's most advanced AI-driven clinical intelligence ecosystem that transforms healthcare delivery through precision diagnostics, predictive analytics, and actionable medical intelligence.",
+      "additionalContent": "We believe that every patient deserves access to the best possible care, informed by the latest medical research and personalized to their unique genetic profile. Our platforms empower healthcare providers with the intelligence they need to deliver truly personalized medicine."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "A world where every healthcare decision is informed by AI-powered intelligence and personalized genetic insights, enabling preventive care and optimal outcomes for all."
+    },
+    "values": [
+      {
+        "title": "Innovation",
+        "description": "Pushing the boundaries of what's possible in healthcare AI and genomics."
+      },
+      {
+        "title": "Precision",
+        "description": "Delivering accurate, evidence-based insights that clinicians can trust."
+      },
+      {
+        "title": "Privacy",
+        "description": "Protecting patient data with the highest standards of security and ethics."
+      },
+      {
+        "title": "Accessibility",
+        "description": "Making precision medicine available to healthcare providers everywhere."
+      }
+    ],
+    "team": [
+      {
+        "role": "Emergency Medicine & Genomics",
+        "experience": "20+ years clinical experience"
+      },
+      {
+        "role": "AI Architecture",
+        "experience": "35+ years in AI/ML systems"
+      },
+      {
+        "role": "Genomics & Research",
+        "experience": "40+ years in molecular biology"
+      },
+      {
+        "role": "Digital Innovation",
+        "experience": "AI entrepreneurship leader"
+      }
+    ]
+  },
+  "careers": {
+    "hero": {
+      "title": "Join Our",
+      "titleHighlight": "Mission",
+      "description": "Help us transform healthcare through AI and genomics. We're looking for passionate individuals who want to make a difference."
+    },
+    "benefits": [
+      {
+        "title": "Meaningful Work",
+        "description": "Make a real impact on healthcare and patient outcomes."
+      },
+      {
+        "title": "Remote-First",
+        "description": "Work from anywhere with flexible schedules."
+      },
+      {
+        "title": "Growth & Learning",
+        "description": "Continuous learning opportunities and career development."
+      },
+      {
+        "title": "Cutting-Edge Tech",
+        "description": "Work with the latest AI, genomics, and cloud technologies."
+      }
+    ],
+    "positions": [
+      {
+        "title": "Senior AI/ML Engineer",
+        "department": "Engineering",
+        "location": "Remote / India",
+        "type": "Full-time",
+        "description": "Build and optimize AI models for clinical decision support and genomic analysis."
+      },
+      {
+        "title": "Full Stack Developer",
+        "department": "Engineering",
+        "location": "Remote / India",
+        "type": "Full-time",
+        "description": "Develop scalable web applications for our healthcare intelligence platforms."
+      },
+      {
+        "title": "Clinical Informatics Specialist",
+        "department": "Clinical",
+        "location": "Kerala, India",
+        "type": "Full-time",
+        "description": "Bridge the gap between clinical workflows and technology solutions."
+      },
+      {
+        "title": "Genomics Data Scientist",
+        "department": "Research",
+        "location": "Remote / USA",
+        "type": "Full-time",
+        "description": "Analyze and interpret genomic data to drive precision medicine insights."
+      }
+    ]
+  },
+  "contact": {
+    "hero": {
+      "title": "Get in",
+      "titleHighlight": "Touch",
+      "description": "Ready to transform healthcare with AI? Let's discuss how Curanova AI can help your organization."
+    },
+    "info": {
+      "email": "hr@curanova.ai",
+      "locations": [
+        "Almas Hospital Complex,",
+        "Changuvetty, Kottakkal",
+        "Malappuram - 676503"
+      ],
+      "hours": {
+        "days": "Monday - Friday",
+        "time": "9:00 AM - 6:00 PM IST"
+      }
+    }
+  }
+}
