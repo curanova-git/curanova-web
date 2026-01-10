@@ -39,8 +39,8 @@ export default function HRAdminLoginPage() {
         return;
       }
 
-      router.push("/careers/admin");
-      router.refresh();
+      // Use hard redirect for reliable navigation after login
+      window.location.href = "/careers/admin";
     } catch (err) {
       setError("An error occurred. Please try again.");
       setLoading(false);
