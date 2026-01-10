@@ -5,6 +5,7 @@ import Link from "next/link";
 import DNAHelix from "@/components/DNAHelix";
 import EditableText from "@/components/admin/EditableText";
 import { useAdmin } from "@/context/AdminContext";
+import { useCandidate } from "@/context/CandidateContext";
 
 interface Job {
   id: string;
@@ -15,9 +16,17 @@ interface Job {
   description: string;
 }
 
+interface Application {
+  id: string;
+  jobId: string;
+  status: string;
+}
+
 export default function CareersPage() {
   const { content } = useAdmin();
+  const { user, isAuthenticated } = useCandidate();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [applications, setApplications] = useState<Application[]>([]);
   const [loadingJobs, setLoadingJobs] = useState(true);
 
   const careersContent = content?.careers as {
@@ -29,6 +38,12 @@ export default function CareersPage() {
     fetchJobs();
   }, []);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchApplications();
+    }
+  }, [isAuthenticated]);
+
   const fetchJobs = async () => {
     try {
       const res = await fetch("/api/careers/jobs");
@@ -39,6 +54,33 @@ export default function CareersPage() {
     } finally {
       setLoadingJobs(false);
     }
+  };
+
+  const fetchApplications = async () => {
+    try {
+      const res = await fetch("/api/careers/applications");
+      const data = await res.json();
+      setApplications(data.applications || []);
+    } catch (error) {
+      console.error("Error fetching applications:", error);
+    }
+  };
+
+  const getApplicationStatus = (jobId: string) => {
+    const app = applications.find(a => a.jobId === jobId);
+    return app ? app.status : null;
+  };
+
+  const getStatusBadge = (status: string) => {
+    const styles: Record<string, string> = {
+      APPLIED: "bg-blue-100 text-blue-600",
+      SHORTLISTED: "bg-yellow-100 text-yellow-600",
+      INTERVIEW: "bg-purple-100 text-purple-600",
+      REJECTED: "bg-red-100 text-red-600",
+      OFFERED: "bg-green-100 text-green-600",
+      ACCEPTED: "bg-emerald-100 text-emerald-600",
+    };
+    return styles[status] || styles.APPLIED;
   };
 
   const benefitIcons = [
@@ -136,6 +178,41 @@ export default function CareersPage() {
         </div>
       </section>
 
+      {/* User Banner - Show when logged in */}
+      {isAuthenticated && user && (
+        <section className="bg-gradient-brand py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3 text-white">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="font-semibold">{(user.name || user.email)[0].toUpperCase()}</span>
+                </div>
+                <div>
+                  <p className="font-medium">Welcome, {user.name || user.email}</p>
+                  <p className="text-sm text-white/80">
+                    {applications.length} application{applications.length !== 1 ? 's' : ''} submitted
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/careers/applications"
+                  className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm"
+                >
+                  My Applications
+                </Link>
+                <Link
+                  href="/careers/dashboard"
+                  className="px-4 py-2 bg-white text-[#1e3a5f] rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Open Positions */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -158,43 +235,62 @@ export default function CareersPage() {
             </div>
           ) : (
             <div className="space-y-6">
-              {jobs.map((job) => (
-                <div
-                  key={job.id}
-                  className="bg-white rounded-2xl p-8 border border-gray-100 card-hover"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div>
-                      <Link
-                        href={`/careers/${job.id}`}
-                        className="text-xl font-bold text-[#1e3a5f] mb-2 hover:text-[#14b8a6] transition-colors block"
-                      >
-                        {job.title}
-                      </Link>
-                      <p className="text-gray-600 mb-4">
-                        {job.description}
-                      </p>
-                      <div className="flex flex-wrap gap-3">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#1e3a5f]/10 text-[#1e3a5f] text-sm">
-                          {job.department}
-                        </span>
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#14b8a6]/10 text-[#14b8a6] text-sm">
-                          {job.location}
-                        </span>
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-sm">
-                          {job.type}
-                        </span>
+              {jobs.map((job) => {
+                const status = getApplicationStatus(job.id);
+                return (
+                  <div
+                    key={job.id}
+                    className="bg-white rounded-2xl p-8 border border-gray-100 card-hover"
+                  >
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                      <div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <Link
+                            href={`/careers/${job.id}`}
+                            className="text-xl font-bold text-[#1e3a5f] hover:text-[#14b8a6] transition-colors"
+                          >
+                            {job.title}
+                          </Link>
+                          {status && (
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusBadge(status)}`}>
+                              {status.charAt(0) + status.slice(1).toLowerCase()}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-gray-600 mb-4">
+                          {job.description}
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#1e3a5f]/10 text-[#1e3a5f] text-sm">
+                            {job.department}
+                          </span>
+                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#14b8a6]/10 text-[#14b8a6] text-sm">
+                            {job.location}
+                          </span>
+                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-sm">
+                            {job.type}
+                          </span>
+                        </div>
                       </div>
+                      {status ? (
+                        <Link
+                          href="/careers/applications"
+                          className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#14b8a6] text-[#14b8a6] rounded-full font-semibold hover:bg-[#14b8a6]/10 transition-colors whitespace-nowrap"
+                        >
+                          View Application
+                        </Link>
+                      ) : (
+                        <Link
+                          href={`/careers/apply/${job.id}`}
+                          className="inline-flex items-center justify-center px-6 py-3 bg-gradient-brand text-white rounded-full font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
+                        >
+                          Apply Now
+                        </Link>
+                      )}
                     </div>
-                    <Link
-                      href={`/careers/apply/${job.id}`}
-                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-brand text-white rounded-full font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
-                    >
-                      Apply Now
-                    </Link>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
