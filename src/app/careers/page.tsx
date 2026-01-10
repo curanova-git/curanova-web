@@ -107,8 +107,43 @@ export default function CareersPage() {
 
   return (
     <div className="overflow-hidden">
+      {/* User Banner - Show when logged in */}
+      {isAuthenticated && user && (
+        <section className="bg-gradient-brand py-3 mt-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3 text-white">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="font-semibold">{(user.name || user.email)[0].toUpperCase()}</span>
+                </div>
+                <div>
+                  <p className="font-medium">Welcome back, {user.name || user.email}!</p>
+                  <p className="text-sm text-white/80">
+                    {applications.length} application{applications.length !== 1 ? 's' : ''} submitted
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/careers/applications"
+                  className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm"
+                >
+                  My Applications
+                </Link>
+                <Link
+                  href="/careers/dashboard"
+                  className="px-4 py-2 bg-white text-[#1e3a5f] rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium"
+                >
+                  Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className={`relative ${isAuthenticated ? 'pt-16' : 'pt-32'} pb-20 bg-gradient-to-b from-gray-50 to-white`}>
         <div className="absolute right-0 top-0 w-72 h-96 opacity-20">
           <DNAHelix className="h-full" />
         </div>
@@ -177,41 +212,6 @@ export default function CareersPage() {
           </div>
         </div>
       </section>
-
-      {/* User Banner - Show when logged in */}
-      {isAuthenticated && user && (
-        <section className="bg-gradient-brand py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3 text-white">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <span className="font-semibold">{(user.name || user.email)[0].toUpperCase()}</span>
-                </div>
-                <div>
-                  <p className="font-medium">Welcome, {user.name || user.email}</p>
-                  <p className="text-sm text-white/80">
-                    {applications.length} application{applications.length !== 1 ? 's' : ''} submitted
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/careers/applications"
-                  className="px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors text-sm"
-                >
-                  My Applications
-                </Link>
-                <Link
-                  href="/careers/dashboard"
-                  className="px-4 py-2 bg-white text-[#1e3a5f] rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium"
-                >
-                  Dashboard
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Open Positions */}
       <section className="py-24 bg-gray-50">
