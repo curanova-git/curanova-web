@@ -109,7 +109,7 @@ export default function CareersPage() {
     <div className="overflow-hidden">
       {/* User Banner - Show when logged in */}
       {isAuthenticated && user && (
-        <section className="bg-gradient-brand py-3 mt-16">
+        <section className="bg-gradient-brand py-3 pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 text-white">
