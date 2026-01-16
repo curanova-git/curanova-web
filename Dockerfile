@@ -2,6 +2,9 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+# Install OpenSSL for Prisma compatibility
+RUN apk add --no-cache openssl
+
 # Copy package files
 COPY package*.json ./
 COPY prisma ./prisma/
@@ -18,10 +21,17 @@ COPY . .
 # Build the Next.js application
 RUN npm run build
 
+# Copy static files for standalone mode
+RUN cp -r public .next/standalone/ || true
+RUN cp -r .next/static .next/standalone/.next/ || true
+
 ENV NODE_ENV=production
 ENV PORT=8080
+ENV HOSTNAME="0.0.0.0"
 
 EXPOSE 8080
 
-# Start the application using shell form to expand PORT variable
-CMD npm run start
+WORKDIR /app/.next/standalone
+
+# Start the standalone server
+CMD ["node", "server.js"]
