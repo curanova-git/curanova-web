@@ -210,7 +210,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1e3a5f] mb-1">Locations</h3>
-                    {(contactContent?.info?.locations || ["Almas Hospital Complex,", "Changuvetty, Kottakkal", "Malappuram - 676503"]).map((location, index) => (
+                    {(contactContent?.info?.locations || ["440 N. Wolfe Road, Sunnyvale, CA 94085", "Office #1, 9th Floor, QFC Tower, West Bay, Doha, Qatar"]).map((location, index) => (
                       <EditableText
                         key={index}
                         page="contact"
