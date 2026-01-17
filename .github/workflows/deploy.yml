@@ -17,23 +17,29 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            set -e
             cd /var/www/curanova/curanova-web
-            echo "Pulling latest code..."
+
+            # Pull changes
             sudo -u Musnet git pull origin master
-            echo "Installing dependencies..."
-            sudo -u Musnet npm install
-            echo "Building application..."
-            sudo -u Musnet npm run build
-            echo "Restarting server..."
+
+            # Check if package.json changed (need npm install)
+            CHANGED=$(sudo -u Musnet git diff --name-only HEAD~1 HEAD)
+            echo "Changed files: $CHANGED"
+
+            if echo "$CHANGED" | grep -q "package"; then
+              echo "Installing dependencies..."
+              sudo -u Musnet npm install
+            fi
+
+            # Check if source files changed (need rebuild)
+            if echo "$CHANGED" | grep -qE "^src/|^content/|\.tsx$|\.ts$|\.json$"; then
+              echo "Rebuilding..."
+              sudo -u Musnet npm run build
+            fi
+
+            # Restart server
             sudo pkill -f "next-server" || true
             sleep 2
             sudo -u Musnet bash -c 'cd /var/www/curanova/curanova-web && nohup npm start > /tmp/curanova.log 2>&1 &'
-            sleep 5
-            if pgrep -f "next-server" > /dev/null; then
-              echo "Deployment successful! Server is running."
-              exit 0
-            else
-              echo "Warning: Server may need manual restart"
-              exit 0
-            fi
+            sleep 3
+            echo "Done"
