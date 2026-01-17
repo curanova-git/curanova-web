@@ -58,6 +58,10 @@
         "icon": "lock"
       }
     ],
+    "featuresSection": {
+      "title": "Intelligence That Transforms Care",
+      "description": "Our integrated platform combines clinical AI with genomic insights to deliver precision healthcare at scale."
+    },
     "platforms": {
       "title": "Two Platforms.",
       "titleHighlight": "One Vision.",
@@ -138,7 +142,16 @@
         "name": "Corporate Health",
         "description": "Employee wellness programs powered by advanced health analytics."
       }
-    ]
+    ],
+    "industriesSection": {
+      "title": "Industries We Serve",
+      "description": "Our solutions are designed to meet the unique needs of various healthcare and wellness sectors."
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Let's discuss how our services can transform your healthcare delivery.",
+      "buttonText": "Contact Us"
+    }
   },
   "solutions": {
     "hero": {
@@ -221,7 +234,16 @@
           "Talent Identification"
         ]
       }
-    ]
+    ],
+    "organizationsSection": {
+      "title": "For Healthcare Organizations",
+      "description": "Comprehensive solutions designed to integrate seamlessly with your existing infrastructure and workflows."
+    },
+    "cta": {
+      "title": "Partner With Us",
+      "description": "Discover how our integrated solutions can transform your healthcare organization.",
+      "buttonText": "Schedule a Demo"
+    }
   },
   "about": {
     "hero": {
@@ -273,7 +295,31 @@
         "role": "Digital Innovation",
         "experience": "AI entrepreneurship leader"
       }
-    ]
+    ],
+    "visionCards": [
+      {
+        "title": "Clinical Intelligence",
+        "description": "We're building AI that thinks alongside clinicians, providing real-time decision support across all medical specialties. Our platform predicts patient deterioration, suggests optimal treatments, and continuously learns from outcomes."
+      },
+      {
+        "title": "Precision Genomics",
+        "description": "Our genomics platform transforms complex genetic data into actionable health insights. From pharmacogenomics to disease prevention, we make precision medicine accessible and practical for everyday clinical use."
+      }
+    ],
+    "valuesSection": {
+      "title": "Our Values",
+      "description": "The principles that guide everything we do."
+    },
+    "teamSection": {
+      "title": "Leadership Team",
+      "description": "Experienced leaders in healthcare, AI, and genomics working together to transform medicine."
+    },
+    "cta": {
+      "title": "Join Our Mission",
+      "description": "We're always looking for talented individuals who share our passion for transforming healthcare.",
+      "buttonText1": "View Careers",
+      "buttonText2": "Contact Us"
+    }
   },
   "careers": {
     "hero": {
@@ -346,6 +392,63 @@
         "days": "Monday - Friday",
         "time": "9:00 AM - 6:00 PM IST"
       }
+    }
+  },
+  "caseStudies": {
+    "hero": {
+      "title": "Case",
+      "titleHighlight": "Studies",
+      "description": "Real-world examples of how our AI and genomics solutions are transforming healthcare delivery and patient outcomes."
+    },
+    "studies": [
+      {
+        "title": "Predictive Patient Monitoring",
+        "category": "Clinical Intelligence",
+        "description": "How AI-powered early warning systems helped reduce ICU transfers and improve patient outcomes in a multi-specialty hospital setting.",
+        "results": [
+          "30% reduction in unexpected ICU transfers",
+          "4-hour earlier intervention on average",
+          "Improved patient safety metrics"
+        ],
+        "status": "Coming Soon"
+      },
+      {
+        "title": "Pharmacogenomics Integration",
+        "category": "Genomics",
+        "description": "Implementing pharmacogenomics-guided prescribing to reduce adverse drug reactions and optimize medication efficacy.",
+        "results": [
+          "Reduced adverse drug events",
+          "Optimized drug dosing",
+          "Improved treatment outcomes"
+        ],
+        "status": "Coming Soon"
+      },
+      {
+        "title": "Population Health Analytics",
+        "category": "Analytics",
+        "description": "Leveraging AI and genomic data to identify high-risk populations and enable targeted preventive interventions.",
+        "results": [
+          "Early disease risk identification",
+          "Targeted prevention programs",
+          "Improved population health outcomes"
+        ],
+        "status": "Coming Soon"
+      }
+    ],
+    "pilotCta": {
+      "title": "Be Part of Our Story",
+      "description": "We're actively seeking healthcare partners for our pilot programs. Join us in demonstrating the transformative power of AI and genomics in clinical settings.",
+      "buttonText": "Become a Partner"
+    },
+    "stats": {
+      "title": "Our Target Impact",
+      "subtitle": "The outcomes we're working to achieve",
+      "items": [
+        { "value": "30-50%", "label": "Reduced ICU Transfers" },
+        { "value": "20-40%", "label": "Lower Readmissions" },
+        { "value": "4-8hr", "label": "Faster Interventions" },
+        { "value": "25+", "label": "Specialty AI Modules" }
+      ]
     }
   }
 }

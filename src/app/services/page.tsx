@@ -227,13 +227,23 @@ export default function ServicesPage() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-[#1e3a5f] mb-6">
-              Industries We Serve
-            </h2>
-            <p className="text-xl text-gray-600">
-              Our solutions are designed to meet the unique needs of various healthcare
-              and wellness sectors.
-            </p>
+            <EditableText
+              page="services"
+              path="industriesSection.title"
+              as="h2"
+              className="text-4xl font-bold text-[#1e3a5f] mb-6"
+            >
+              {(content?.services as { industriesSection?: { title: string; description: string } })?.industriesSection?.title || "Industries We Serve"}
+            </EditableText>
+            <EditableText
+              page="services"
+              path="industriesSection.description"
+              as="p"
+              className="text-xl text-gray-600"
+              multiline
+            >
+              {(content?.services as { industriesSection?: { title: string; description: string } })?.industriesSection?.description || "Our solutions are designed to meet the unique needs of various healthcare and wellness sectors."}
+            </EditableText>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -270,17 +280,30 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-24 bg-gradient-brand">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Let&apos;s discuss how our services can transform your healthcare delivery.
-          </p>
+          <EditableText
+            page="services"
+            path="cta.title"
+            as="h2"
+            className="text-4xl font-bold text-white mb-6"
+          >
+            {(content?.services as { cta?: { title: string; description: string; buttonText: string } })?.cta?.title || "Ready to Get Started?"}
+          </EditableText>
+          <EditableText
+            page="services"
+            path="cta.description"
+            as="p"
+            className="text-xl text-white/80 mb-10 max-w-2xl mx-auto"
+            multiline
+          >
+            {(content?.services as { cta?: { title: string; description: string; buttonText: string } })?.cta?.description || "Let's discuss how our services can transform your healthcare delivery."}
+          </EditableText>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center px-10 py-4 bg-white text-[#1e3a5f] rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
           >
-            Contact Us
+            <EditableText page="services" path="cta.buttonText">
+              {(content?.services as { cta?: { title: string; description: string; buttonText: string } })?.cta?.buttonText || "Contact Us"}
+            </EditableText>
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

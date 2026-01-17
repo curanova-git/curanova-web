@@ -138,13 +138,23 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-[#1e3a5f] mb-4">Clinical Intelligence</h3>
-              <p className="text-gray-600 leading-relaxed">
-                We&apos;re building AI that thinks alongside clinicians, providing
-                real-time decision support across all medical specialties. Our
-                platform predicts patient deterioration, suggests optimal treatments,
-                and continuously learns from outcomes.
-              </p>
+              <EditableText
+                page="about"
+                path="visionCards[0].title"
+                as="h3"
+                className="text-2xl font-bold text-[#1e3a5f] mb-4"
+              >
+                {(content?.about as { visionCards?: Array<{ title: string; description: string }> })?.visionCards?.[0]?.title || "Clinical Intelligence"}
+              </EditableText>
+              <EditableText
+                page="about"
+                path="visionCards[0].description"
+                as="p"
+                className="text-gray-600 leading-relaxed"
+                multiline
+              >
+                {(content?.about as { visionCards?: Array<{ title: string; description: string }> })?.visionCards?.[0]?.description || "We're building AI that thinks alongside clinicians, providing real-time decision support across all medical specialties. Our platform predicts patient deterioration, suggests optimal treatments, and continuously learns from outcomes."}
+              </EditableText>
             </div>
 
             <div className="bg-white rounded-2xl p-8 border border-gray-100">
@@ -153,12 +163,23 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-[#1e3a5f] mb-4">Precision Genomics</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Our genomics platform transforms complex genetic data into actionable
-                health insights. From pharmacogenomics to disease prevention, we make
-                precision medicine accessible and practical for everyday clinical use.
-              </p>
+              <EditableText
+                page="about"
+                path="visionCards[1].title"
+                as="h3"
+                className="text-2xl font-bold text-[#1e3a5f] mb-4"
+              >
+                {(content?.about as { visionCards?: Array<{ title: string; description: string }> })?.visionCards?.[1]?.title || "Precision Genomics"}
+              </EditableText>
+              <EditableText
+                page="about"
+                path="visionCards[1].description"
+                as="p"
+                className="text-gray-600 leading-relaxed"
+                multiline
+              >
+                {(content?.about as { visionCards?: Array<{ title: string; description: string }> })?.visionCards?.[1]?.description || "Our genomics platform transforms complex genetic data into actionable health insights. From pharmacogenomics to disease prevention, we make precision medicine accessible and practical for everyday clinical use."}
+              </EditableText>
             </div>
           </div>
         </div>
@@ -168,10 +189,22 @@ export default function AboutPage() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-[#1e3a5f] mb-6">Our Values</h2>
-            <p className="text-xl text-gray-600">
-              The principles that guide everything we do.
-            </p>
+            <EditableText
+              page="about"
+              path="valuesSection.title"
+              as="h2"
+              className="text-4xl font-bold text-[#1e3a5f] mb-6"
+            >
+              {(content?.about as { valuesSection?: { title: string; description: string } })?.valuesSection?.title || "Our Values"}
+            </EditableText>
+            <EditableText
+              page="about"
+              path="valuesSection.description"
+              as="p"
+              className="text-xl text-gray-600"
+            >
+              {(content?.about as { valuesSection?: { title: string; description: string } })?.valuesSection?.description || "The principles that guide everything we do."}
+            </EditableText>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -206,11 +239,23 @@ export default function AboutPage() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-[#1e3a5f] mb-6">Leadership Team</h2>
-            <p className="text-xl text-gray-600">
-              Experienced leaders in healthcare, AI, and genomics working together
-              to transform medicine.
-            </p>
+            <EditableText
+              page="about"
+              path="teamSection.title"
+              as="h2"
+              className="text-4xl font-bold text-[#1e3a5f] mb-6"
+            >
+              {(content?.about as { teamSection?: { title: string; description: string } })?.teamSection?.title || "Leadership Team"}
+            </EditableText>
+            <EditableText
+              page="about"
+              path="teamSection.description"
+              as="p"
+              className="text-xl text-gray-600"
+              multiline
+            >
+              {(content?.about as { teamSection?: { title: string; description: string } })?.teamSection?.description || "Experienced leaders in healthcare, AI, and genomics working together to transform medicine."}
+            </EditableText>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -249,25 +294,39 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="py-24 bg-gradient-brand">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Join Our Mission
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            We&apos;re always looking for talented individuals who share our passion
-            for transforming healthcare.
-          </p>
+          <EditableText
+            page="about"
+            path="cta.title"
+            as="h2"
+            className="text-4xl font-bold text-white mb-6"
+          >
+            {(content?.about as { cta?: { title: string; description: string; buttonText1: string; buttonText2: string } })?.cta?.title || "Join Our Mission"}
+          </EditableText>
+          <EditableText
+            page="about"
+            path="cta.description"
+            as="p"
+            className="text-xl text-white/80 mb-10 max-w-2xl mx-auto"
+            multiline
+          >
+            {(content?.about as { cta?: { title: string; description: string; buttonText1: string; buttonText2: string } })?.cta?.description || "We're always looking for talented individuals who share our passion for transforming healthcare."}
+          </EditableText>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/careers"
               className="inline-flex items-center justify-center px-10 py-4 bg-white text-[#1e3a5f] rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
             >
-              View Careers
+              <EditableText page="about" path="cta.buttonText1">
+                {(content?.about as { cta?: { title: string; description: string; buttonText1: string; buttonText2: string } })?.cta?.buttonText1 || "View Careers"}
+              </EditableText>
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-10 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-colors"
             >
-              Contact Us
+              <EditableText page="about" path="cta.buttonText2">
+                {(content?.about as { cta?: { title: string; description: string; buttonText1: string; buttonText2: string } })?.cta?.buttonText2 || "Contact Us"}
+              </EditableText>
             </Link>
           </div>
         </div>

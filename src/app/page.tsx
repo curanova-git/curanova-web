@@ -17,6 +17,7 @@ export default function Home() {
       ctaSecondary: string;
     };
     stats: Array<{ value: string; label: string }>;
+    featuresSection: { title: string; description: string };
     features: Array<{ title: string; description: string; icon: string }>;
     platforms: {
       title: string;
@@ -180,13 +181,23 @@ export default function Home() {
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a5f] mb-6">
-              Intelligence That Transforms Care
-            </h2>
-            <p className="text-xl text-gray-600">
-              Our integrated platform combines clinical AI with genomic insights to deliver
-              precision healthcare at scale.
-            </p>
+            <EditableText
+              page="home"
+              path="featuresSection.title"
+              as="h2"
+              className="text-4xl md:text-5xl font-bold text-[#1e3a5f] mb-6"
+            >
+              {homeContent?.featuresSection?.title || "Intelligence That Transforms Care"}
+            </EditableText>
+            <EditableText
+              page="home"
+              path="featuresSection.description"
+              as="p"
+              className="text-xl text-gray-600"
+              multiline
+            >
+              {homeContent?.featuresSection?.description || "Our integrated platform combines clinical AI with genomic insights to deliver precision healthcare at scale."}
+            </EditableText>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
