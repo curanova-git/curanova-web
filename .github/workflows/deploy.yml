@@ -43,4 +43,5 @@ jobs:
             sleep 2
             sudo -u Musnet bash -c 'cd /var/www/curanova/curanova-web && nohup npm start > /tmp/curanova.log 2>&1 &'
             sleep 3
-            echo "Done"
+            echo "Deploy complete"
+            true
