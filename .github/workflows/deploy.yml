@@ -17,12 +17,23 @@ jobs:
           username: ${{ secrets.VM_USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
+            set -e
             cd /var/www/curanova/curanova-web
+            echo "Pulling latest code..."
             sudo -u Musnet git pull origin master
+            echo "Installing dependencies..."
             sudo -u Musnet npm install
+            echo "Building application..."
             sudo -u Musnet npm run build
+            echo "Restarting server..."
             sudo pkill -f "next-server" || true
             sleep 2
             sudo -u Musnet bash -c 'cd /var/www/curanova/curanova-web && nohup npm start > /tmp/curanova.log 2>&1 &'
-            sleep 3
-            pgrep -f "next-server" && echo "Server started successfully" || echo "Server may need manual restart"
+            sleep 5
+            if pgrep -f "next-server" > /dev/null; then
+              echo "Deployment successful! Server is running."
+              exit 0
+            else
+              echo "Warning: Server may need manual restart"
+              exit 0
+            fi
