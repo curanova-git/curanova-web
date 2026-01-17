@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import AdminToolbar from "./admin/AdminToolbar";
 
 export default function LayoutWrapper({
   children,
@@ -23,6 +24,7 @@ export default function LayoutWrapper({
       <Navbar />
       {children}
       <Footer />
+      <AdminToolbar />
     </>
   );
 }
