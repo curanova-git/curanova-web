@@ -13,6 +13,15 @@ export const metadata: Metadata = {
   title: "Curanova AI | AI-Powered Clinical Intelligence & Genomics",
   description: "Transforming healthcare through AI-driven clinical intelligence and precision genomics. Empowering healthcare providers with predictive analytics and actionable insights.",
   keywords: "AI healthcare, clinical intelligence, genomics, precision medicine, predictive analytics, healthcare AI, medical AI",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Curanova AI | AI-Powered Clinical Intelligence & Genomics",
     description: "Transforming healthcare through AI-driven clinical intelligence and precision genomics.",
