@@ -38,6 +38,24 @@ jobs:
               sudo -u Musnet npm run build
             fi
 
-            # Restart server using PM2
-            sudo -u Musnet pm2 restart curanova-web || sudo -u Musnet pm2 start npm --name curanova-web -- start
-            echo "Deploy complete"
+            # Ensure logs directory exists
+            sudo -u Musnet mkdir -p /var/www/curanova/logs
+
+            # Stop existing process gracefully
+            sudo -u Musnet pm2 delete curanova-web 2>/dev/null || true
+
+            # Start using ecosystem config for better process management
+            sudo -u Musnet pm2 start ecosystem.config.js
+
+            # Save PM2 process list to resurrect on reboot
+            sudo -u Musnet pm2 save
+
+            # Wait a moment and verify the server is running
+            sleep 5
+            if sudo -u Musnet pm2 list | grep -q "curanova-web.*online"; then
+              echo "Deploy complete - server is running"
+            else
+              echo "WARNING: Server may not have started correctly"
+              sudo -u Musnet pm2 logs curanova-web --lines 20
+              exit 1
+            fi
